@@ -1,0 +1,125 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 thumb
+    2 00000000                 area             reset, data, readonly
+    3 00000000                 import           TabCos      ; tableau contenant
+                                                             le cosinus des ang
+                                                            les
+    4 00000000                 import           TabSin      ; tableau contenant
+                                                             le sinus des mêmes
+                                                             angles
+    5 00000000                 export           som_cos_sin
+    6 00000000                 area             reset, data, readwrite
+    7 00000000         debut
+    8 00000000 20004000        dcd              0x20004000  ; stack en fin de l
+                                                            a zone de 20k de RA
+                                                            M
+    9 00000004                 area             fonction, code, readonly
+   10 00000000         ;fonction som_cos_sin 
+   11 00000000         som_cos_sin
+                               proc
+   12 00000000 4906            ldr              r1,=TabCos  ; charger la tab de
+                                                             cos
+   13 00000002 4A07            ldr              r2,=TabSin  ; charger la tab de
+                                                             sin
+   14 00000004         ;on considere r0 le parametre initial qui contient l'ind
+                       ice d'entrer 
+   15 00000004 F931 1010       ldrsh            r1,[r1,r0,lsl #1] ; charger Tab
+                                                            Cos[r0] dans r1 ave
+                                                            c extension de sign
+                                                            e
+   16 00000008 F932 2010       ldrsh            r2,[r2,r0,lsl #1] ; charger Tab
+                                                            sin[r0] dans r2 ave
+                                                            c extension de sign
+                                                            e 
+   17 0000000C FB01 F401       mul              r4,r1,r1    ; (cos(x)*cos(x))
+   18 00000010 FB02 F702       mul              r7,r2,r2    ;(sin(x)*sin(x))
+   19 00000014 EB07 0004       add              r0,r7,r4    ; resultat dans r0=
+                                                            cos(x).cos(x) + sin
+                                                            (x)sin(x)
+   20 00000018 4770            bx               lr          ;
+   21 0000001A                 endp
+   22 0000001A         
+   23 0000001A                 end
+              00 00 00000000 
+              00000000 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\fonc.d -o.\objects\fonc.o -I.\RTE\_Target_1 -IC:\Users\P
+ierre\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\Device\ARM\ARMCM3\Include -I"C:\P
+rogram Files\Keil_v5\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --predefine
+="__UVISION_VERSION SETA 529" --predefine="ARMCM3 SETA 1" --list=.\listings\fon
+c.lst fonc.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+debut 00000000
+
+Symbol: debut
+   Definitions
+      At line 7 in file fonc.s
+   Uses
+      None
+Comment: debut unused
+reset 00000000
+
+Symbol: reset
+   Definitions
+      At line 2 in file fonc.s
+   Uses
+      None
+Comment: reset unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+fonction 00000000
+
+Symbol: fonction
+   Definitions
+      At line 9 in file fonc.s
+   Uses
+      None
+Comment: fonction unused
+som_cos_sin 00000000
+
+Symbol: som_cos_sin
+   Definitions
+      At line 11 in file fonc.s
+   Uses
+      At line 5 in file fonc.s
+Comment: som_cos_sin used once
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+TabCos 00000000
+
+Symbol: TabCos
+   Definitions
+      At line 3 in file fonc.s
+   Uses
+      At line 12 in file fonc.s
+Comment: TabCos used once
+TabSin 00000000
+
+Symbol: TabSin
+   Definitions
+      At line 4 in file fonc.s
+   Uses
+      At line 13 in file fonc.s
+Comment: TabSin used once
+2 symbols
+341 symbols in table
