@@ -22,29 +22,29 @@ ARM Macro Assembler    Page 1
    10 00000000         ;fonction som_cos_sin 
    11 00000000         som_cos_sin
                                proc
-   12 00000000 4906            ldr              r1,=TabCos  ; charger la tab de
+   12 00000000 4908            ldr              r1,=TabCos  ; charger la tab de
                                                              cos
-   13 00000002 4A07            ldr              r2,=TabSin  ; charger la tab de
+   13 00000002 4A09            ldr              r2,=TabSin  ; charger la tab de
                                                              sin
-   14 00000004         ;on considere r0 le parametre initial qui contient l'ind
-                       ice d'entrer 
+   14 00000004         ; on considere r0 le parametre initial qui contient l'in
+                       dice d'entrée
    15 00000004 F931 1010       ldrsh            r1,[r1,r0,lsl #1] ; charger Tab
-                                                            Cos[r0] dans r1 ave
-                                                            c extension de sign
-                                                            e
+                                                            Cos[r0] dans r1
    16 00000008 F932 2010       ldrsh            r2,[r2,r0,lsl #1] ; charger Tab
-                                                            sin[r0] dans r2 ave
-                                                            c extension de sign
-                                                            e 
-   17 0000000C FB01 F401       mul              r4,r1,r1    ; (cos(x)*cos(x))
-   18 00000010 FB02 F702       mul              r7,r2,r2    ;(sin(x)*sin(x))
-   19 00000014 EB07 0004       add              r0,r7,r4    ; resultat dans r0=
+                                                            sin[r0] dans r2
+   17 0000000C B410            push             {r4}        ;
+   18 0000000E B480            push             {r7}        ;
+   19 00000010 FB01 F401       mul              r4,r1,r1    ; (cos(x)*cos(x))
+   20 00000014 FB02 F702       mul              r7,r2,r2    ;(sin(x)*sin(x))
+   21 00000018 EB07 0004       add              r0,r7,r4    ; resultat dans r0=
                                                             cos(x).cos(x) + sin
                                                             (x)sin(x)
-   20 00000018 4770            bx               lr          ;
-   21 0000001A                 endp
-   22 0000001A         
-   23 0000001A                 end
+   22 0000001C BC80            pop              {r7}        ;
+   23 0000001E BC10            pop              {r4}        ;
+   24 00000020 4770            bx               lr          ;
+   25 00000022                 endp
+   26 00000022         
+   27 00000022                 end
               00 00 00000000 
               00000000 
 Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw

@@ -18,26 +18,28 @@ Hex Converter:   FromElf.exe V5.06 update 6 (build 750)
 CPU DLL:         SARMCM3.DLL V5.29.0.0
 Dialog DLL:      DCM.DLL V1.17.3.0
 Target DLL:      UL2CM3.DLL V1.163.0.0
-Dialog DLL:      TCM.DLL V1.36.5.0
+Dialog DLL:      DARMSTM.DLL V1.68.0.0
  
 <h2>Project:</h2>
-C:\Users\Pierre\BE-CHTI\PROJ_DEUX\dft.uvprojx
-Project File Date:  03/24/2020
+C:\Users\Pierre\BE-CHTI\PROJ_TROIS\dft2.uvprojx
+Project File Date:  03/30/2020
 
 <h2>Output:</h2>
 *** Using Compiler 'V5.06 update 6 (build 750)', folder: 'C:\Program Files\Keil_v5\ARM\ARMCC\Bin'
 Rebuild target 'Target 1'
+assembling carre.s...
 assembling tab.s...
-assembling fonc.s...
-fonc.s(27): warning: A1581W: Added 2 bytes of padding at address 0x22
-compiling test.c...
-test.c(17): warning:  #1-D: last line of file ends without a newline
+compiling dft.c...
+dft.c(11): warning:  #1-D: last line of file ends without a newline
   }
-test.c: 1 warning, 0 errors
+dft.c(6): warning:  #550-D: variable "ok"  was set but never used
+  	int ok=0 ;
+dft.c: 2 warnings, 0 errors
+assembling tab2.s...
 assembling startup-rvds.s...
 linking...
-Program Size: Code=448 RO-data=508 RW-data=0 ZI-data=1632  
-".\Objects\dft.axf" - 0 Error(s), 2 Warning(s).
+Program Size: Code=252 RO-data=636 RW-data=0 ZI-data=1024  
+".\Objects\dft2.axf" - 0 Error(s), 2 Warning(s).
 
 <h2>Software Packages used:</h2>
 
@@ -51,7 +53,7 @@ Package Vendor: ARM
   C:\Users\Pierre\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\Device\ARM\ARMCM3\Include
 
 <h2>Collection of Component Files used:</h2>
-Build Time Elapsed:  00:00:01
+Build Time Elapsed:  00:00:00
 </pre>
 </body>
 </html>

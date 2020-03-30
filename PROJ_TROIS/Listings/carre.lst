@@ -1,0 +1,133 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000                 thumb
+    2 00000000                 area             reset, data, readonly
+    3 00000000                 import           TabCos      ; tableau contenant
+                                                             le cosinus des ang
+                                                            les
+    4 00000000                 import           TabSin      ; tableau contenant
+                                                             le sinus des m?mes
+                                                             angles
+    5 00000000                 export           redft
+    6 00000000                 area             reset, data, readwrite
+    7 00000000         debut
+    8 00000000 20019000        dcd              0x20019000  ; stack en fin de l
+                                                            a zone de 20k de RA
+                                                            M
+    9 00000004                 area             fonction, code, readonly
+   10 00000000         
+   11 00000000         
+   12 00000000         redft   PROC
+   13 00000000 F04F 0300       mov              r3, #0
+   14 00000004 B430            push{r4,r5}
+   15 00000006         ;r0=adresse de base du signal, r1=valeur de k, r2=adress
+                       e de TabCos, r3=valeur de i, lr=valeur somme
+   16 00000006 F04F 0E00       mov              lr, #0
+   17 0000000A         
+   18 0000000A         somme
+   19 0000000A FB01 F403       mul              r4, r1, r3  ; r4=ik
+   20 0000000E F004 048F       and              r4, #0x8F   ; r4=r4 mod 64
+   21 00000012 F932 4014       ldrsh            r4,[r2,r4,lsl#1] ; charger TabC
+                                                            os[r4] dans r4
+   22 00000016 F930 5013       ldrsh            r5,[r0,r3,lsl#1] ; charger TabS
+                                                            ig[r3] dans r5
+   23 0000001A FB04 F405       mul              r4, r4,r5
+   24 0000001E 44A6            add              lr, r4
+   25 00000020 F103 0301       add              r3, #1
+   26 00000024                 ENDP
+   27 00000024         
+   28 00000024 2B40            cmp              r3,#64
+   29 00000026 D3F0            blo              somme       ; si i<64 on revien
+                                                            t au label somme
+   30 00000028         
+   31 00000028 BC30            pop              {r4,r5}
+   32 0000002A 4770            bx               lr
+   33 0000002C                 END
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\carre.d -o.\objects\carre.o -I.\RTE\_Target_1 -IC:\Users
+\Pierre\AppData\Local\Arm\Packs\ARM\CMSIS\5.6.0\Device\ARM\ARMCM3\Include -I"C:
+\Program Files\Keil_v5\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --predefi
+ne="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 529" --predefine="AR
+MCM3 SETA 1" --list=.\listings\carre.lst carre.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+debut 00000000
+
+Symbol: debut
+   Definitions
+      At line 7 in file carre.s
+   Uses
+      None
+Comment: debut unused
+reset 00000000
+
+Symbol: reset
+   Definitions
+      At line 2 in file carre.s
+   Uses
+      None
+Comment: reset unused
+2 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+fonction 00000000
+
+Symbol: fonction
+   Definitions
+      At line 9 in file carre.s
+   Uses
+      None
+Comment: fonction unused
+redft 00000000
+
+Symbol: redft
+   Definitions
+      At line 12 in file carre.s
+   Uses
+      At line 5 in file carre.s
+Comment: redft used once
+somme 0000000A
+
+Symbol: somme
+   Definitions
+      At line 18 in file carre.s
+   Uses
+      At line 29 in file carre.s
+Comment: somme used once
+3 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+TabCos 00000000
+
+Symbol: TabCos
+   Definitions
+      At line 3 in file carre.s
+   Uses
+      None
+Comment: TabCos unused
+TabSin 00000000
+
+Symbol: TabSin
+   Definitions
+      At line 4 in file carre.s
+   Uses
+      None
+Comment: TabSin unused
+2 symbols
+341 symbols in table
