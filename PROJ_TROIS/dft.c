@@ -1,11 +1,13 @@
-int redft (int*adr,int k,int*adr2) ;
-extern int * TabCos ;
-extern int * TabSig ;
-
+int redft (short*adr,int k,short*adr2) ;
+extern short TabCos[] ;
+extern short TabSig[] ;
+int res ;
+int k ;
 int main () {
-	int ok=0 ;
-	for (int k=0 ; k<64 ; k++) {
-		ok=redft(TabCos,k,TabSig) ;
+	
+	for (k=0 ; k<64 ; k++) {
+		res=redft(TabSig,k,TabCos) ;
 	}
-	return(0) ;
+	while (1) {
+	}
 }

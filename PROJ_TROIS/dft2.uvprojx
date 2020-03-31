@@ -397,25 +397,38 @@
               <FileType>1</FileType>
               <FilePath>.\dft.c</FilePath>
             </File>
-            <File>
-              <FileName>tab2.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\tab2.s</FilePath>
-            </File>
           </Files>
         </Group>
         <Group>
           <GroupName>sys</GroupName>
           <Files>
             <File>
+              <FileName>startup-rvds.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>..\PROJ_UN\Src\startup-rvds.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drivers</GroupName>
+          <Files>
+            <File>
               <FileName>gassp72.lib</FileName>
               <FileType>4</FileType>
               <FilePath>..\GASSP72\gassp72.lib</FilePath>
             </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>signal</GroupName>
+        </Group>
+        <Group>
+          <GroupName>Tests</GroupName>
+          <Files>
             <File>
-              <FileName>startup-rvds.s</FileName>
+              <FileName>f1p-45.asm</FileName>
               <FileType>2</FileType>
-              <FilePath>..\PROJ_UN\Src\startup-rvds.s</FilePath>
+              <FilePath>.\test_DFT\f1p-45.asm</FilePath>
             </File>
           </Files>
         </Group>
