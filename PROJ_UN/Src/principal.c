@@ -1,6 +1,6 @@
 #include "gassp72.h"
 
-extern int state = 0 ;
+int state = 0 ;
 void timer_callback (void);
 
 int main(void)

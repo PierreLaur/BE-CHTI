@@ -403,14 +403,19 @@
           <GroupName>Sys</GroupName>
           <Files>
             <File>
-              <FileName>gassp72.lib</FileName>
-              <FileType>4</FileType>
-              <FilePath>..\GASSP72\gassp72.lib</FilePath>
-            </File>
-            <File>
               <FileName>startup-rvds.s</FileName>
               <FileType>2</FileType>
               <FilePath>..\PROJ_UN\Src\startup-rvds.s</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>drivers</GroupName>
+          <Files>
+            <File>
+              <FileName>gassp72.lib</FileName>
+              <FileType>4</FileType>
+              <FilePath>..\GASSP72\gassp72.lib</FilePath>
             </File>
           </Files>
         </Group>

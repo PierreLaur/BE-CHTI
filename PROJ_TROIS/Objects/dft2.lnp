@@ -1,7 +1,8 @@
 --cpu Cortex-M3
 ".\objects\carre.o"
-".\objects\tab.o"
 ".\objects\dft.o"
+".\objects\trigo.o"
+".\objects\m2.o"
 ".\objects\startup-rvds.o"
 "..\GASSP72\gassp72.lib"
 ".\objects\f1p-45.o"

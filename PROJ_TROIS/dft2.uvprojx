@@ -388,14 +388,19 @@
               <FilePath>.\carre.s</FilePath>
             </File>
             <File>
-              <FileName>tab.s</FileName>
-              <FileType>2</FileType>
-              <FilePath>.\tab.s</FilePath>
-            </File>
-            <File>
               <FileName>dft.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\dft.c</FilePath>
+            </File>
+            <File>
+              <FileName>trigo.asm</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\test_DFT\trigo.asm</FilePath>
+            </File>
+            <File>
+              <FileName>m2.s</FileName>
+              <FileType>2</FileType>
+              <FilePath>.\m2.s</FilePath>
             </File>
           </Files>
         </Group>

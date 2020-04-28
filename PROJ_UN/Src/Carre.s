@@ -17,7 +17,6 @@ timer_callback	PROC
 	ldr	r3, =GPIOB_BSRR
 	mov	r1, #0x00000002
 	str	r1, [r3]
-	bx lr
 state1
 ; mise à zero de state
 	mov r4, #0
