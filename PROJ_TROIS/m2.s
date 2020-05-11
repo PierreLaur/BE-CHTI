@@ -14,15 +14,14 @@ m2 PROC
 	
 	ldr r2,=TabCos
 	BL reimdft ; appel de reimdft avec cos (calcul de Re(k), retour dans r0)
-	smull r5,r0,r0,r0 ; calcul de Re² : on garde 32 bits. POINT D'ARRET : Re(k) dans R0
-	mov r6,r0 ; POINT D'ARRET : Re² dans r0
+	smull r5,r6,r0,r0 ; calcul de Re² : on garde 32 bits. POINT D'ARRET : Re(k) dans R0
 	
 	mov r0, r4 ; on remet l'adresse de TabSig dans r0
-	
 	ldr r2,=TabSin
+	
 	BL reimdft ; appel de reimdft avec sin (calcul de Im(k), retour dans r0)
-	smull r5,r0, r0,r0 ; calcul de Im² : on garde 32 bits. POINT D'ARRET : Im(k) dans R0
-	add r0,r6 ; on ajoute Re² à Im²
+	smlal r5,r6, r0,r0 ; calcul de Im² : on garde 32 bits. POINT D'ARRET : Im(k) dans R0
+	mov r0,r6 ; on ajoute Re² à Im²
 		
 	pop{r4,r5,r6,PC}
 	ENDP
