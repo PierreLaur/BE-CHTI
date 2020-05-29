@@ -2,7 +2,10 @@
 # Issam HIHI & Pierre LAUR
 
 Objectif 2 terminé.
+Objectif 3 terminé.  
+-> Display Range choisit pour TIM3_CCR3 : Max : 360
+                                       Min : 0
+-> On laisses Run, puis on stop et on fait un All dans Zoom.
+-> Cochez, Cursor pour voir les différentes valeurs.
+-> ( Manipulez la barre pour voir les précédentes valeurs obtenues ).
 
-Pour observer le résultat de la dft, mettre un point d'arrêt dans dft.c ligne 34.
-Pour observer le compteur et les scores, ajouter les variables cpt et scores à watch 1.
-Pour voir les résultats, enlever les points d'arrêt et lire les valeurs des scores. Modifier le #define DET (Duree_Ech_Ticks) pour tester les cas différents. Avec 0x52, on doit obtenir les scores 1,2,3,4,5 et 15.
