@@ -1,18 +1,18 @@
- thumb
+	thumb
 	area fonction, code, readonly
+	export m2
 	import reimdft
 	import TabCos
 	import TabSin
-	export m2
+	
 		
 m2 PROC
 	push {r4,r5,r6,LR}
-	; reimdft(=TabSig, k, =TabCos/TabSin)
-	; l'adresse de TabSig est dans r0, k est dans r1
+	; l'adresse de dma_buf est dans r0, k est dans r1
 	mov r4, r0 ; on met l'adresse de TabSig dans r4
 	
 	ldr r2,=TabCos
-	BL reimdft ; appel de reimdft avec cos (calcul de Re(k), retour dans r0)
+		BL reimdft ; appel de reimdft avec cos (calcul de Re(k), retour dans r0)
 	smull r5,r6,r0,r0 ; calcul de Re² : on garde 32 bits. POINT D'ARRET : Re(k) dans R0
 	
 	mov r0, r4 ; on remet l'adresse de TabSig dans r0

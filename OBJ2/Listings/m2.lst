@@ -6,15 +6,15 @@ ARM Macro Assembler    Page 1
 
     1 00000000                 thumb
     2 00000000                 area             fonction, code, readonly
-    3 00000000                 import           reimdft
-    4 00000000                 import           TabCos
-    5 00000000                 import           TabSin
-    6 00000000                 export           m2
+    3 00000000                 export           m2
+    4 00000000                 import           reimdft
+    5 00000000                 import           TabCos
+    6 00000000                 import           TabSin
     7 00000000         
-    8 00000000         m2      PROC
-    9 00000000 B570            push             {r4,r5,r6,LR}
-   10 00000002         ; reimdft(=TabSig, k, =TabCos/TabSin)
-   11 00000002         ; l'adresse de TabSig est dans r0, k est dans r1
+    8 00000000         
+    9 00000000         m2      PROC
+   10 00000000 B570            push             {r4,r5,r6,LR}
+   11 00000002         ; l'adresse de dma_buf est dans r0, k est dans r1
    12 00000002 4604            mov              r4, r0      ; on met l'adresse 
                                                             de TabSig dans r4
    13 00000004         
@@ -73,9 +73,9 @@ m2 00000000
 
 Symbol: m2
    Definitions
-      At line 8 in file m2.s
+      At line 9 in file m2.s
    Uses
-      At line 6 in file m2.s
+      At line 3 in file m2.s
 Comment: m2 used once
 2 symbols
 
@@ -88,7 +88,7 @@ TabCos 00000000
 
 Symbol: TabCos
    Definitions
-      At line 4 in file m2.s
+      At line 5 in file m2.s
    Uses
       At line 14 in file m2.s
 Comment: TabCos used once
@@ -96,7 +96,7 @@ TabSin 00000000
 
 Symbol: TabSin
    Definitions
-      At line 5 in file m2.s
+      At line 6 in file m2.s
    Uses
       At line 19 in file m2.s
 Comment: TabSin used once
@@ -104,7 +104,7 @@ reimdft 00000000
 
 Symbol: reimdft
    Definitions
-      At line 3 in file m2.s
+      At line 4 in file m2.s
    Uses
       At line 15 in file m2.s
       At line 21 in file m2.s

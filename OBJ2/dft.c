@@ -5,10 +5,10 @@
 
 #define SYSTICK_PER 360000
 #define M2TIR 985988
+#define DET 0x52
 
-int m2 (short*TabSig, int k) ;
+int m2 (unsigned short*, int k) ;
 extern short TabSig[] ;
-int st = 0x00020000;
 
 int cpt[6];
 int scores[6] ;
@@ -32,7 +32,7 @@ void sys_callback(void){
 	Stop_DMA1;
 	
 	for(int j=0; j<6; j++){
-		res = m2(TabSig, kval[j]);
+		res = m2(dma_buf, kval[j]);
 		if(res > M2TIR){
 			cpt[j]++;
 		}else{
@@ -60,7 +60,7 @@ int main () {
 	GPIO_Configure(GPIOB, 14, OUTPUT, OUTPUT_PPULL);
 
 	// activation ADC, sampling time 1us
-	Init_TimingADC_ActiveADC_ff( ADC1, 0x33 );
+	Init_TimingADC_ActiveADC_ff( ADC1, DET );
 	Single_Channel_ADC( ADC1, 2 );
 	// Déclenchement ADC par timer2, periode (72MHz/320kHz)ticks
 	Init_Conversion_On_Trig_Timer_ff( ADC1, TIM2_CC2, 225 );
@@ -76,5 +76,6 @@ int main () {
 	SysTick_Enable_IT;
 	
 	while (1) { 
+		
 	} 
 }
