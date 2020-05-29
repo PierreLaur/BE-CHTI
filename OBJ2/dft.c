@@ -21,6 +21,7 @@ void checkcpt(void){
 		if(cpt[i] >= 13){
 			cpt[i]=0;
 			scores[i]++;
+			
 		}
 	}
 }
