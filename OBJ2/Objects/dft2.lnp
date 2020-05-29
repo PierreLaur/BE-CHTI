@@ -1,0 +1,14 @@
+--cpu Cortex-M3
+".\objects\carre.o"
+".\objects\dft.o"
+".\objects\trigo.o"
+".\objects\m2.o"
+".\objects\startup-rvds.o"
+"..\common\GFSSP72\gfssp72.lib"
+".\objects\f23p-26_f24p-116.o"
+".\objects\f1p-45.o"
+".\objects\f17p30_f18p135.o"
+--library_type=microlib --strict --scatter ".\Objects\dft2.sct"
+--summary_stderr --info summarysizes --map --load_addr_map_info --xref --callgraph --symbols
+--info sizes --info totals --info unused --info veneers
+--list ".\Listings\dft2.map" -o .\Objects\dft2.axf

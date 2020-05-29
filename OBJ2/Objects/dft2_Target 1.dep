@@ -1,0 +1,21 @@
+Dependencies for Project 'dft2', Target 'Target 1': (DO NOT MODIFY !)
+CompilerVersion: 5060750::V5.06 update 6 (build 750)::ARMCC
+F (.\carre.s)(0x5ED0F087)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\carre.lst --xref -o .\objects\carre.o --depend .\objects\carre.d)
+F (.\dft.c)(0x5ED0EF51)(--c99 --gnu -c --cpu Cortex-M3 -D__EVAL -D__MICROLIB -g -O0 --apcs=interwork --split_sections -I .\GFSSP72 --C99-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"-D__UVISION_VERSION="529" -DSTM32F10X_MD -DSTM32F103xB -DUSE_FULL_LL_DRIVER-o .\objects\dft.o --omf_browse .\objects\dft.crf --depend .\objects\dft.d)
+I (gassp72.h)(0x5C63215F)
+I (C:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\stm32f10x.h)(0x58259ADC)
+I (C:\Program Files\Keil_v5\ARM\CMSIS\Include\core_cm3.h)(0x559D4E0A)
+I (C:\Program Files\Keil_v5\ARM\ARMCC\include\stdint.h)(0x5D9B3488)
+I (C:\Program Files\Keil_v5\ARM\CMSIS\Include\core_cmInstr.h)(0x559D4E0A)
+I (C:\Program Files\Keil_v5\ARM\CMSIS\Include\core_cmFunc.h)(0x559D4E0A)
+I (C:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include\system_stm32f10x.h)(0x58259ADC)
+I (C:\Program Files\Keil_v5\ARM\ARMCC\include\stdlib.h)(0x5D9B348A)
+I (C:\Program Files\Keil_v5\ARM\ARMCC\include\time.h)(0x5D9B3482)
+I (C:\Program Files\Keil_v5\ARM\ARMCC\include\stdio.h)(0x5D9B348A)
+F (.\test_DFT\trigo.asm)(0x5EC047AC)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\trigo.lst --xref -o .\objects\trigo.o --depend .\objects\trigo.d)
+F (.\m2.s)(0x5ED0F0A0)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\m2.lst --xref -o .\objects\m2.o --depend .\objects\m2.d)
+F (.\startup-rvds.s)(0x5EC047AC)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\startup-rvds.lst --xref -o .\objects\startup-rvds.o --depend .\objects\startup-rvds.d)
+F (..\common\GFSSP72\gfssp72.lib)(0x5E7C89A5)()
+F (.\test_DFT\f23p-26_f24p-116.asm)(0x5EC047AC)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\f23p-26_f24p-116.lst --xref -o .\objects\f23p-26_f24p-116.o --depend .\objects\f23p-26_f24p-116.d)
+F (.\test_DFT\f1p-45.asm)(0x5EC047AC)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\f1p-45.lst --xref -o .\objects\f1p-45.o --depend .\objects\f1p-45.d)
+F (.\test_DFT\f17p30_f18p135.asm)(0x5EC047AC)(--cpu Cortex-M3 --pd "__EVAL SETA 1" -g --apcs=interwork --pd "__MICROLIB SETA 1"-I.\RTE\_Target_1-IC:\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include-I"C:\Program Files\Keil_v5\ARM\CMSIS\Include"--pd "__UVISION_VERSION SETA 529" --pd "STM32F10X_MD SETA 1"--list .\listings\f17p30_f18p135.lst --xref -o .\objects\f17p30_f18p135.o --depend .\objects\f17p30_f18p135.d)
