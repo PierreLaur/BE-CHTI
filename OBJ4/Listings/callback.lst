@@ -1,0 +1,237 @@
+
+
+
+ARM Macro Assembler    Page 1 
+
+
+    1 00000000         
+    2 00000000                 thumb
+    3 00000000                 include          etat.inc
+    1 00000000         ;typedef struct {
+    2 00000000         ;int position;  // 0
+    3 00000000         ;int taille;  // 4
+    4 00000000         ;void * son;  // 8
+    5 00000000         ;int resolution; // 12
+    6 00000000         ;int periode_ticks; // 16
+    7 00000000         ;} type_etat;
+    8 00000000         
+    9 00000000         ;/*
+   10 00000000 00000000 
+                       E_POS   equ              0
+   11 00000000 00000004 
+                       E_TAI   equ              4
+   12 00000000 00000008 
+                       E_SON   equ              8
+   13 00000000 0000000C 
+                       E_RES   equ              12
+   14 00000000 00000010 
+                       E_PER   equ              16
+   15 00000000                 end
+    4 00000000                 extern           StructS
+    5 00000000                 extern           Position
+    6 00000000         
+    7 00000000 4000043C 
+                       TIM3_CCR3
+                               equ              0x4000043C  ; adresse registre 
+                                                            PWM
+    8 00000000         
+    9 00000000                 area             moncode, code, readonly
+   10 00000000                 export           timer_callback
+   11 00000000         ;
+   12 00000000         timer_callback
+                               proc
+   13 00000000 4811            ldr              r0,=StructS ; on charge l'adres
+                                                            sse de la structure
+                                                             son
+   14 00000002 4912            ldr              r1, =TIM3_CCR3 ; charge l'adres
+                                                            se du registre de P
+                                                            WM dans r3 
+   15 00000004 6802            ldr              r2,[r0]     ; position actuelle
+                                                             
+   16 00000006 6843            ldr              r3,[r0, #E_TAI] ; taille de not
+                                                            re échantillon 
+   17 00000008 429A            cmp              r2,r3       ; on compare taille
+                                                             et position ( on c
+                                                            tn si position<tail
+                                                            le)
+   18 0000000A D214            bhs              silence     ; on quitte si on e
+                                                            st à la fin 
+   19 0000000C         
+   20 0000000C         ; si on est pas a la fin du coup ( resultat cmp) :
+   21 0000000C E92D 0180       push             {r7,r8}     ; push r7 r8
+   22 00000010 6887            ldr              r7, [r0,#E_SON] ; charge echant
+                                                            illon dans le regis
+                                                            tre r7
+   23 00000012 F937 C012       ldrsh            r12 ,[r7, r2, LSL #1] ; echanti
+
+
+
+ARM Macro Assembler    Page 2 
+
+
+                                                            llon actuel ( pas b
+                                                            esoin de push r12)
+   24 00000016 F50C 4C00       add              r12, #0x8000 ; addition composa
+                                                            nte ctn, on choisit
+                                                             la moitié de l'int
+                                                            ervalle 32768    
+   25 0000001A F8D0 800C       ldr              r8, [r0, #E_RES] ; affecte au r
+                                                            egistre r8 le resol
+                                                            ution
+   26 0000001E FB0C FC08       mul              r12,r8      ; mul résolution av
+                                                            ec notre échantillo
+                                                            n  
+   27 00000022 EA4F 4C1C       lsr              r12,#16     ; div par 2^16 
+   28 00000026         
+   29 00000026         ; il est temps d'envoyer
+   30 00000026 F102 0201       add              r2,#1       ; maj de la positio
+                                                            n 
+   31 0000002A 6002            str              r2,[r0]     ; stock la nouvelle
+                                                             position dans la s
+                                                            tructure son
+   32 0000002C F8C1 C000       str              r12,[r1]    ; stock l'échantill
+                                                            on modifié dans le 
+                                                            registre PWM 
+   33 00000030 E8BD 0180       pop              {r8,r7}     ;      
+   34 00000034 E006            b                fin
+   35 00000036         
+   36 00000036 F8D0 C00C 
+                       silence ldr              r12, [r0, #E_RES] ; charge la s
+                                                            tructure 
+   37 0000003A EA4F 0C5C       lsr              r12, #1     ; divpar 2^1 
+   38 0000003E F8C1 C000       str              r12,[r1]    ; stock r12 dans le
+                                                             registre de PWM 
+   39 00000042 E7FF            B                fin
+   40 00000044         
+   41 00000044 4770    fin     bx               lr
+   42 00000046                 endp
+   43 00000046         ;
+   44 00000046                 end
+              00 00 00000000 
+              4000043C 
+Command Line: --debug --xref --diag_suppress=9931 --cpu=Cortex-M3 --apcs=interw
+ork --depend=.\objects\callback.d -o.\objects\callback.o -I.\RTE\_Target_1 -IC:
+\Users\Pierre\AppData\Local\Arm\Packs\Keil\STM32F1xx_DFP\2.3.0\Device\Include -
+I"C:\Program Files\Keil_v5\ARM\CMSIS\Include" --predefine="__EVAL SETA 1" --pre
+define="__MICROLIB SETA 1" --predefine="__UVISION_VERSION SETA 529" --predefine
+="STM32F10X_MD SETA 1" --list=.\listings\callback.lst callback.s
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Relocatable symbols
+
+fin 00000044
+
+Symbol: fin
+   Definitions
+      At line 41 in file callback.s
+   Uses
+      At line 34 in file callback.s
+      At line 39 in file callback.s
+
+moncode 00000000
+
+Symbol: moncode
+   Definitions
+      At line 9 in file callback.s
+   Uses
+      None
+Comment: moncode unused
+silence 00000036
+
+Symbol: silence
+   Definitions
+      At line 36 in file callback.s
+   Uses
+      At line 18 in file callback.s
+Comment: silence used once
+timer_callback 00000000
+
+Symbol: timer_callback
+   Definitions
+      At line 12 in file callback.s
+   Uses
+      At line 10 in file callback.s
+Comment: timer_callback used once
+4 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+Absolute symbols
+
+E_PER 00000010
+
+Symbol: E_PER
+   Definitions
+      At line 14 in file etat.inc
+   Uses
+      None
+Comment: E_PER unused
+E_POS 00000000
+
+Symbol: E_POS
+   Definitions
+      At line 10 in file etat.inc
+   Uses
+      None
+Comment: E_POS unused
+E_RES 0000000C
+
+Symbol: E_RES
+   Definitions
+      At line 13 in file etat.inc
+   Uses
+      At line 25 in file callback.s
+      At line 36 in file callback.s
+
+E_SON 00000008
+
+Symbol: E_SON
+   Definitions
+      At line 12 in file etat.inc
+   Uses
+      At line 22 in file callback.s
+Comment: E_SON used once
+E_TAI 00000004
+
+Symbol: E_TAI
+   Definitions
+      At line 11 in file etat.inc
+   Uses
+      At line 16 in file callback.s
+Comment: E_TAI used once
+TIM3_CCR3 4000043C
+
+Symbol: TIM3_CCR3
+   Definitions
+      At line 7 in file callback.s
+   Uses
+      At line 14 in file callback.s
+Comment: TIM3_CCR3 used once
+6 symbols
+
+
+
+ARM Macro Assembler    Page 1 Alphabetic symbol ordering
+External symbols
+
+Position 00000000
+
+Symbol: Position
+   Definitions
+      At line 5 in file callback.s
+   Uses
+      None
+Comment: Position unused
+StructS 00000000
+
+Symbol: StructS
+   Definitions
+      At line 4 in file callback.s
+   Uses
+      At line 13 in file callback.s
+Comment: StructS used once
+2 symbols
+348 symbols in table

@@ -1,11 +1,9 @@
 # BE-CHTI
 # Issam HIHI & Pierre LAUR
 
-Objectif 2 terminé.
-Objectif 3 terminé.  
--> Display Range choisit pour TIM3_CCR3 : Max : 360
-                                       Min : 0
--> On laisses Run, puis on stop et on fait un All dans Zoom.
--> Cochez, Cursor pour voir les différentes valeurs.
--> ( Manipulez la barre pour voir les précédentes valeurs obtenues ).
+Objectif 4 :
+    - Les sons se lancent bien de manière corrélée avec l'incrémentation des scores (pas de sons quand les scores ne bougent plus)
+    - Les sons se lancent avec un peu de décalage, et il n'y en a pas un pour chaque incrémentation de score.
 
+pour observer : ajouter TIM3 (fichier callback.s) et par exemple, une case du tableau scores au logic analyzer
+Poser un point d'arrêt ligne 31 dans dft.c 
